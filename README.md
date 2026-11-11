@@ -36,6 +36,8 @@ Public URLs (proxy rewrites into `app/[locale]/…`):
 
 ## Content (the cousin path)
 
+Elena works on the `elena` branch.
+
 See [AGENTS.md](./AGENTS.md). Short version:
 
 1. Add `content/obra/mi-obra.mdx` (and `mi-obra.en.mdx`).
