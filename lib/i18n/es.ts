@@ -1,0 +1,116 @@
+export const es = {
+  siteName: "Casa Estudio Rafael Cauduro",
+  shortName: "Casa Cauduro",
+  monogram: "RC",
+  tagline: "CASA ESTUDIO",
+  nav: {
+    casa: "Casa Cauduro",
+    obra: "Obra",
+    visita: "Visita",
+    cartelera: "Cartelera",
+    tienda: "Tienda",
+    contacto: "Contacto",
+    biografia: "Biografía",
+    tecnica: "Técnica",
+  },
+  obraCats: {
+    murales: "Murales",
+    "gran-formato": "Gran formato",
+    vidrio: "Vidrio",
+    dibujo: "Dibujo",
+    giclees: "Giclées",
+    escultorico: "Escultórico",
+  },
+  footer: {
+    terms: "Términos",
+    privacy: "Privacidad",
+    support: "WhatsApp",
+    instagram: "Instagram",
+    facebook: "Facebook",
+    rights: "© Rafael Cauduro 2026 — Todos los derechos reservados",
+  },
+  language: {
+    es: "ES",
+    en: "EN",
+    switchTo: "English",
+  },
+  home: {
+    kicker: "Artista y muralista mexicano · 1950–2022",
+    title: "Rafael Cauduro",
+    hook: "Haciendo visible el paso del tiempo.",
+    lead: "Durante más de cincuenta años hizo de la pintura un territorio donde la memoria permanece adherida a los muros, la piel y la arquitectura. Su obra trasformó la superficie en testimonio y el vestigio en una de las experiencias más profundas de la condición humana.",
+    quote: "«Yo pinto mentiras.»",
+    ctaVisita: "Visita la casa",
+    ctaObra: "Ver su obra",
+    ctaCartelera: "En cartelera",
+    sectionObra: "De su obra",
+    sectionCasa: "La casa donde Cauduro vivió y creó",
+    sectionCartelera: "En cartelera",
+  },
+  obra: {
+    title: "La Obra",
+    intro:
+      "Murales, gran formato, vidrio, dibujo, giclées y escultórico. Lo que aquí se reúne es apenas una muestra de su producción.",
+    categories: {
+      murales: "Murales",
+      "gran-formato": "Gran formato",
+      vidrio: "Vidrio",
+      dibujo: "Dibujo",
+      giclees: "Giclées",
+      escultorico: "Escultórico",
+    },
+    inquire: "Consultar disponibilidad",
+  },
+  casa: {
+    title: "Casa Cauduro",
+    intro:
+      "La Casa Cauduro, en Cuernavaca, Morelos, es el hogar donde el maestro vivió sus últimos años y el taller donde dio forma a muchas de sus obras más emblemáticas.",
+    cta: "Agenda tu visita",
+  },
+  visita: {
+    title: "Visita la Casa Cauduro",
+    intro:
+      "Conoce el espacio donde Rafael Cauduro vivió y pintó, en Cuernavaca. Recorrido guiado por el estudio, los jardines y la casa del maestro.",
+    embedMissing:
+      "El widget de Cal.com aparece cuando NEXT_PUBLIC_CALCOM_EMBED_URL está definido. Mientras tanto, el texto de la visita vive en content/pages/visita.mdx.",
+    whatsapp: "Contáctanos por WhatsApp",
+    book: "Agenda tu visita guiada",
+  },
+  cartelera: {
+    title: "En cartelera",
+    intro: "Exposiciones y fechas.",
+    current: "Exposición en curso",
+  },
+  tienda: {
+    title: "Tienda",
+    intro:
+      "Reproducciones giclée en edición limitada y objetos con la obra del maestro. Comprar abre Stripe Checkout. Las obras únicas se consultan por correo.",
+    buy: "Comprar",
+    unavailable: "No disponible",
+    inquire: "Solicitar costo",
+    stripeMissing: "Stripe Checkout no está configurado (STRIPE_SECRET_KEY).",
+  },
+  contacto: {
+    title: "Contacto",
+    intro:
+      "Para eventos privados, visitas guiadas, investigación, colaboraciones o compra de obra, completa el formulario.",
+    name: "Nombre",
+    email: "Correo",
+    message: "Mensaje",
+    send: "Envíanos un mensaje",
+    sent: "Mensaje enviado.",
+    error: "No se pudo enviar. Escribe a estudio@cauduro.com.",
+  },
+  legal: {
+    terms: "Términos",
+    privacy: "Privacidad",
+  },
+  common: {
+    year: "Año",
+    medium: "Técnica",
+    price: "Precio",
+    available: "Disponible",
+    unavailable: "No disponible",
+    more: "Más información →",
+  },
+} as const;

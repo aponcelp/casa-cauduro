@@ -1,0 +1,116 @@
+export const en = {
+  siteName: "Casa Estudio Rafael Cauduro",
+  shortName: "Casa Cauduro",
+  monogram: "RC",
+  tagline: "HOUSE STUDIO",
+  nav: {
+    casa: "Casa Cauduro",
+    obra: "Work",
+    visita: "Visit",
+    cartelera: "Exhibitions",
+    tienda: "Shop",
+    contacto: "Contact",
+    biografia: "Biography",
+    tecnica: "Technique",
+  },
+  obraCats: {
+    murales: "Murals",
+    "gran-formato": "Large format",
+    vidrio: "Glass",
+    dibujo: "Drawing",
+    giclees: "Giclées",
+    escultorico: "Sculpture",
+  },
+  footer: {
+    terms: "Terms",
+    privacy: "Privacy",
+    support: "WhatsApp",
+    instagram: "Instagram",
+    facebook: "Facebook",
+    rights: "© Rafael Cauduro 2026 — All rights reserved",
+  },
+  language: {
+    es: "ES",
+    en: "EN",
+    switchTo: "Español",
+  },
+  home: {
+    kicker: "Mexican artist and muralist · 1950–2022",
+    title: "Rafael Cauduro",
+    hook: "Making the passage of time visible.",
+    lead: "For more than fifty years he made painting a territory where memory clings to walls, skin and architecture. His work turned surface into testimony, and the trace into one of the deepest experiences of the human condition.",
+    quote: "“I paint lies.”",
+    ctaVisita: "Visit the house",
+    ctaObra: "See his work",
+    ctaCartelera: "On view",
+    sectionObra: "From his work",
+    sectionCasa: "The house where Cauduro lived and created",
+    sectionCartelera: "On view",
+  },
+  obra: {
+    title: "The Work",
+    intro:
+      "Murals, large format, glass, drawing, giclées and sculpture. What is gathered here is only a sample of his production.",
+    categories: {
+      murales: "Murals",
+      "gran-formato": "Large format",
+      vidrio: "Glass",
+      dibujo: "Drawing",
+      giclees: "Giclées",
+      escultorico: "Sculpture",
+    },
+    inquire: "Inquire",
+  },
+  casa: {
+    title: "Casa Cauduro",
+    intro:
+      "Casa Cauduro in Cuernavaca, Morelos, is the home where the maestro spent his last years and the workshop where he shaped many of his most iconic works.",
+    cta: "Book your visit",
+  },
+  visita: {
+    title: "Visit Casa Cauduro",
+    intro:
+      "Discover the space where Rafael Cauduro lived and painted in Cuernavaca. A guided tour of the studio, gardens and house.",
+    embedMissing:
+      "The Cal.com widget appears when NEXT_PUBLIC_CALCOM_EMBED_URL is set. Visit copy lives in content/pages/visita.en.mdx.",
+    whatsapp: "Contact us on WhatsApp",
+    book: "Book your guided tour",
+  },
+  cartelera: {
+    title: "On view",
+    intro: "Shows and dates.",
+    current: "Current exhibition",
+  },
+  tienda: {
+    title: "Shop",
+    intro:
+      "Limited-edition giclées and objects with the maestro’s work. Buy opens Stripe Checkout. Unique works are inquiry-only.",
+    buy: "Buy",
+    unavailable: "Unavailable",
+    inquire: "Request price",
+    stripeMissing: "Stripe Checkout is not configured (STRIPE_SECRET_KEY).",
+  },
+  contacto: {
+    title: "Contact",
+    intro:
+      "For private events, guided visits, research, collaborations or acquiring work, send a message.",
+    name: "Name",
+    email: "Email",
+    message: "Message",
+    send: "Send us a message",
+    sent: "Message sent.",
+    error: "Could not send. Write to estudio@cauduro.com.",
+  },
+  legal: {
+    terms: "Terms",
+    privacy: "Privacy",
+  },
+  common: {
+    year: "Year",
+    medium: "Technique",
+    price: "Price",
+    available: "Available",
+    unavailable: "Unavailable",
+    more: "More information →",
+  },
+} as const;
