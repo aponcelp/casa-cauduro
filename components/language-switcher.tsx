@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Locale } from "@/lib/locale";
-import { publicPath, switchLocalePath } from "@/lib/locale";
+import { publicPath } from "@/lib/locale";
 import { getDictionary } from "@/lib/i18n";
 
 export function LanguageSwitcher({
@@ -27,7 +27,7 @@ export function LanguageSwitcher({
       </Link>
       <span aria-hidden>/</span>
       <Link
-        href={switchLocalePath("es", path)}
+        href={publicPath("en", path)}
         className={
           locale === "en"
             ? "text-[#8c3b2a]"

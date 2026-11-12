@@ -3,6 +3,11 @@ import type { NextRequest } from "next/server";
 
 const FILE = /\.[^/]+$/;
 
+/**
+ * Spanish public URLs have no prefix (`/obra`). Internally they rewrite to `/es/…`.
+ * English stays at `/en/…`. Do not redirect `/es` → `/` — that loops with the rewrite
+ * under Next’s proxy implementation.
+ */
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
@@ -15,18 +20,16 @@ export function proxy(request: NextRequest) {
     return NextResponse.next();
   }
 
-  if (pathname === "/es" || pathname.startsWith("/es/")) {
-    const url = request.nextUrl.clone();
-    url.pathname = pathname.replace(/^\/es/, "") || "/";
-    return NextResponse.redirect(url);
+  if (pathname === "/en" || pathname.startsWith("/en/")) {
+    return NextResponse.next();
   }
 
-  const isEn = pathname === "/en" || pathname.startsWith("/en/");
-  const locale = isEn ? "en" : "es";
-  const stripped = isEn ? pathname.replace(/^\/en/, "") || "/" : pathname;
-  const url = request.nextUrl.clone();
-  url.pathname = `/${locale}${stripped === "/" ? "" : stripped}`;
+  if (pathname === "/es" || pathname.startsWith("/es/")) {
+    return NextResponse.next();
+  }
 
+  const url = request.nextUrl.clone();
+  url.pathname = pathname === "/" ? "/es" : `/es${pathname}`;
   return NextResponse.rewrite(url);
 }
 
