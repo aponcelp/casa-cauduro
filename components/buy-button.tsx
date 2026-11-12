@@ -6,19 +6,13 @@ export function BuyButton({
   slug,
   label,
   disabledLabel,
-  configured,
 }: {
   slug: string;
   label: string;
   disabledLabel: string;
-  configured: boolean;
 }) {
   const [error, setError] = useState<string | null>(null);
   const [pending, setPending] = useState(false);
-
-  if (!configured) {
-    return <p className="mt-6 text-sm text-[#5c574f]">{disabledLabel}</p>;
-  }
 
   async function checkout() {
     setPending(true);
@@ -30,6 +24,10 @@ export function BuyButton({
         body: JSON.stringify({ slug }),
       });
       const data = (await response.json()) as { url?: string; error?: string };
+      if (response.status === 503) {
+        setError(disabledLabel);
+        return;
+      }
       if (!response.ok || !data.url) {
         setError(data.error ?? "Checkout failed");
         return;
