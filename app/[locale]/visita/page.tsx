@@ -1,23 +1,26 @@
+import { Suspense } from "react";
 import Image from "next/image";
-import { CalEmbed } from "@/components/cal-embed";
 import { CtaAnchor } from "@/components/cta-link";
 import { MdxBody } from "@/components/mdx-body";
 import { PageShell } from "@/components/page-shell";
-import { calEmbedIsPlaceholder, calEmbedUrl } from "@/lib/calcom";
+import {
+  VisitBookingFallback,
+  VisitBookingSection,
+} from "@/components/visit-booking-section";
 import { readDoc } from "@/lib/content";
 import { getDictionary } from "@/lib/i18n";
 import { parseLocale } from "@/lib/locale";
 
 export default async function VisitaPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ locale: string }>;
+  searchParams: Promise<{ checkout?: string; session_id?: string }>;
 }) {
   const locale = parseLocale((await params).locale);
   const t = getDictionary(locale);
   const page = readDoc("pages", "visita", locale);
-  const embed = calEmbedUrl();
-  const placeholder = calEmbedIsPlaceholder();
 
   return (
     <PageShell locale={locale} path="/visita" bleed>
@@ -45,13 +48,11 @@ export default async function VisitaPage({
             <MdxBody source={page.body} />
           </div>
         ) : null}
-        {placeholder ? (
-          <p className="mt-10 max-w-2xl text-base leading-7 text-[#5c574f]">
-            {t.visita.embedMissing}
-          </p>
-        ) : (
-          <CalEmbed url={embed} />
-        )}
+
+        <Suspense fallback={<VisitBookingFallback locale={locale} />}>
+          <VisitBookingSection locale={locale} searchParams={searchParams} />
+        </Suspense>
+
         <p className="mt-8">
           <CtaAnchor
             cta="visita_whatsapp"

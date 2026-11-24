@@ -75,6 +75,16 @@ export const en = {
       "Online booking is temporarily unavailable. Contact us on WhatsApp to reserve your guided visit.",
     whatsapp: "Contact us on WhatsApp",
     book: "Book your guided tour",
+    priceLabel: "Visit price",
+    payCta: "Pay and schedule",
+    payLocked:
+      "Online payment unlocks the calendar. You cannot pick a time slot until you pay.",
+    unlocked: "Payment received. Choose your time below.",
+    cancelled: "Payment cancelled. You can try again whenever you like.",
+    unpaid:
+      "We could not confirm payment. If your card was charged, contact us on WhatsApp.",
+    stripeMissing:
+      "Online payment is temporarily unavailable. Contact us on WhatsApp.",
   },
   cartelera: {
     title: "On view",

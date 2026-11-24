@@ -75,6 +75,17 @@ export const es = {
       "La agenda en línea no está disponible por el momento. Contáctanos por WhatsApp para reservar tu visita guiada.",
     whatsapp: "Contáctanos por WhatsApp",
     book: "Agenda tu visita guiada",
+    priceLabel: "Precio de la visita",
+    payCta: "Pagar y agendar",
+    payLocked:
+      "El pago en línea desbloquea el calendario. Sin pago no se puede reservar horario.",
+    unlocked:
+      "Pago recibido. Elige tu horario abajo.",
+    cancelled: "Pago cancelado. Puedes intentar de nuevo cuando quieras.",
+    unpaid:
+      "No pudimos confirmar el pago. Si cobramos tu tarjeta, escríbenos por WhatsApp.",
+    stripeMissing:
+      "El pago en línea no está disponible por el momento. Contáctanos por WhatsApp.",
   },
   cartelera: {
     title: "En cartelera",
