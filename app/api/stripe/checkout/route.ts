@@ -10,7 +10,7 @@ export async function POST(request: Request) {
     return NextResponse.json(
       {
         error:
-          "Stripe is not configured. Set STRIPE_SECRET_KEY=sk_test_… in .env.local",
+          "Online payment is temporarily unavailable. Please try again later or contact us.",
       },
       { status: 503 },
     );

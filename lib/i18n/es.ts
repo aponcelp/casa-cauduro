@@ -72,7 +72,7 @@ export const es = {
     intro:
       "Conoce el espacio donde Rafael Cauduro vivió y pintó, en Cuernavaca. Recorrido guiado por el estudio, los jardines y la casa del maestro.",
     embedMissing:
-      "La agenda en línea no está disponible por el momento. Contáctanos por WhatsApp para reservar tu visita guiada.",
+      "La agenda en línea estará disponible en breve. Mientras tanto, escríbenos por WhatsApp.",
     whatsapp: "Contáctanos por WhatsApp",
     book: "Agenda tu visita guiada",
     priceLabel: "Precio de la visita",
@@ -85,7 +85,7 @@ export const es = {
     unpaid:
       "No pudimos confirmar el pago. Si cobramos tu tarjeta, escríbenos por WhatsApp.",
     stripeMissing:
-      "El pago en línea no está disponible por el momento. Contáctanos por WhatsApp.",
+      "El pago en línea no está disponible por ahora. Escríbenos por WhatsApp para agendar.",
   },
   cartelera: {
     title: "En cartelera",
@@ -99,7 +99,8 @@ export const es = {
     buy: "Comprar",
     unavailable: "No disponible",
     inquire: "Solicitar costo",
-    stripeMissing: "Stripe Checkout no está configurado (STRIPE_SECRET_KEY).",
+    stripeMissing:
+      "La compra en línea no está disponible por ahora. Escríbenos a tienda@cauduro.com.",
   },
   contacto: {
     title: "Contacto",
