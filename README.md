@@ -37,7 +37,7 @@ Public URLs (proxy rewrites into `app/[locale]/…`):
 
 ## Visita (Cal.com)
 
-`NEXT_PUBLIC_CALCOM_EMBED_URL` is the public booking link (with `?embed=true` preferred). Until set, `/visita` loads a placeholder Cal.com URL so the iframe is present — replace it with the real prepaid event. WhatsApp stays support-only.
+`NEXT_PUBLIC_CALCOM_EMBED_URL` is the public booking link (with `?embed=true` preferred). When set, `/visita` embeds that calendar. When missing, the page shows a friendly WhatsApp fallback — no env var names in visitor copy.
 
 ## Tienda (Stripe Checkout)
 
