@@ -72,7 +72,7 @@ export const en = {
     intro:
       "Discover the space where Rafael Cauduro lived and painted in Cuernavaca. A guided tour of the studio, gardens and house.",
     embedMissing:
-      "The Cal.com widget appears when NEXT_PUBLIC_CALCOM_EMBED_URL is set. Visit copy lives in content/pages/visita.en.mdx.",
+      "Online booking is temporarily unavailable. Contact us on WhatsApp to reserve your guided visit.",
     whatsapp: "Contact us on WhatsApp",
     book: "Book your guided tour",
   },

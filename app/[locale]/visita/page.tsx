@@ -44,16 +44,13 @@ export default async function VisitaPage({
             <MdxBody source={page.body} />
           </div>
         ) : null}
-        <CalEmbed
-          url={embed}
-          placeholderNote={
-            placeholder
-              ? locale === "en"
-                ? "Showing the Cal.com embed URL from env (or the casacauduro/visita-guiada placeholder). Replace NEXT_PUBLIC_CALCOM_EMBED_URL with your prepaid event link."
-                : "Se muestra el embed de Cal.com desde env (o el placeholder casacauduro/visita-guiada). Sustituye NEXT_PUBLIC_CALCOM_EMBED_URL con el enlace de tu evento prepago."
-              : undefined
-          }
-        />
+        {placeholder ? (
+          <p className="mt-10 max-w-2xl text-base leading-7 text-[#5c574f]">
+            {t.visita.embedMissing}
+          </p>
+        ) : (
+          <CalEmbed url={embed} />
+        )}
         <p className="mt-8">
           <a
             href="https://wa.me/527779866155?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20las%20visitas%20guiadas%20a%20la%20Casa%20Estudio"

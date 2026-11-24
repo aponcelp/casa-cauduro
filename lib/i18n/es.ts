@@ -72,7 +72,7 @@ export const es = {
     intro:
       "Conoce el espacio donde Rafael Cauduro vivió y pintó, en Cuernavaca. Recorrido guiado por el estudio, los jardines y la casa del maestro.",
     embedMissing:
-      "El widget de Cal.com aparece cuando NEXT_PUBLIC_CALCOM_EMBED_URL está definido. Mientras tanto, el texto de la visita vive en content/pages/visita.mdx.",
+      "La agenda en línea no está disponible por el momento. Contáctanos por WhatsApp para reservar tu visita guiada.",
     whatsapp: "Contáctanos por WhatsApp",
     book: "Agenda tu visita guiada",
   },
