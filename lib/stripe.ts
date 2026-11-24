@@ -19,6 +19,7 @@ export function getStripe(): Stripe {
   return new Stripe(key);
 }
 
+/** Canonical public site URL (production). Prefer requestOrigin for Checkout return URLs. */
 export function siteUrl(): string {
   return (
     process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
@@ -26,4 +27,32 @@ export function siteUrl(): string {
       ? `https://${process.env.VERCEL_URL}`
       : "http://localhost:3000")
   );
+}
+
+/**
+ * Origin for Stripe success/cancel redirects and post-pay redirects.
+ * Uses the incoming Host so preview deploys stay on the preview hostname
+ * instead of NEXT_PUBLIC_SITE_URL (production).
+ */
+export function requestOrigin(request: Request): string {
+  const forwardedHost = request.headers.get("x-forwarded-host")?.split(",")[0]?.trim();
+  const host =
+    forwardedHost ||
+    request.headers.get("host")?.split(",")[0]?.trim() ||
+    process.env.VERCEL_URL?.replace(/^https?:\/\//, "");
+
+  if (host) {
+    const forwardedProto = request.headers
+      .get("x-forwarded-proto")
+      ?.split(",")[0]
+      ?.trim();
+    const proto =
+      forwardedProto ||
+      (host.includes("localhost") || host.startsWith("127.")
+        ? "http"
+        : "https");
+    return `${proto}://${host}`.replace(/\/$/, "");
+  }
+
+  return siteUrl();
 }

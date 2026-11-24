@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { readDoc, type ContentKind } from "@/lib/content";
-import { getStripe, siteUrl, stripeConfigured } from "@/lib/stripe";
+import { getStripe, requestOrigin, stripeConfigured } from "@/lib/stripe";
 import { VISIT_PRODUCT_SLUG } from "@/lib/visit-unlock";
 
 type CheckoutKind = "tienda" | "visita";
@@ -46,7 +46,8 @@ export async function POST(request: Request) {
     );
   }
 
-  const origin = siteUrl();
+  // Use the request host so preview Checkout returns to preview, not production SITE_URL.
+  const origin = requestOrigin(request);
   const localePrefix = body.locale === "en" ? "/en" : "";
   const locale = body.locale === "en" ? "en" : "es";
   const stripe = getStripe();

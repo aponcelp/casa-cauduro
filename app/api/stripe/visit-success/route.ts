@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { siteUrl } from "@/lib/stripe";
+import { requestOrigin } from "@/lib/stripe";
 import {
   unlockCookieOptions,
   verifyVisitCheckoutSession,
@@ -7,13 +7,14 @@ import {
 
 /**
  * Stripe success_url lands here with session_id.
- * Verify paid visita session → set unlock cookie → redirect to /visita.
+ * Verify paid visita session → set unlock cookie → redirect to /visita
+ * on the same host that handled this request (preview or production).
  */
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const sessionId = searchParams.get("session_id");
   const locale = searchParams.get("locale") === "en" ? "en" : "es";
-  const origin = siteUrl();
+  const origin = requestOrigin(request);
   const visitaPath = locale === "en" ? "/en/visita" : "/visita";
 
   if (!sessionId) {

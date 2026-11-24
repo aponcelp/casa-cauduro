@@ -40,11 +40,15 @@ export async function verifyVisitCheckoutSession(
 }
 
 export function unlockCookieOptions(sessionId: string) {
+  // Vercel preview/production are always HTTPS; keep cookies Secure there.
+  const secure =
+    process.env.NODE_ENV === "production" ||
+    Boolean(process.env.VERCEL);
   return {
     name: VISIT_UNLOCK_COOKIE,
     value: sessionId,
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
+    secure,
     sameSite: "lax" as const,
     path: "/",
     maxAge: VISIT_UNLOCK_MAX_AGE_SEC,
