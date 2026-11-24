@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { CtaAnchor } from "@/components/cta-link";
 import { getDictionary } from "@/lib/i18n";
 import type { Locale } from "@/lib/locale";
 import { publicPath } from "@/lib/locale";
@@ -40,9 +41,15 @@ export function SiteFooter({ locale }: { locale: Locale }) {
           <Link href={publicPath(locale, "/privacidad")}>
             {t.footer.privacy}
           </Link>
-          <a href={WHATSAPP} rel="noreferrer" target="_blank">
+          <CtaAnchor
+            cta="footer_whatsapp"
+            locale={locale}
+            href={WHATSAPP}
+            rel="noreferrer"
+            target="_blank"
+          >
             {t.footer.support}
-          </a>
+          </CtaAnchor>
           <a href={INSTAGRAM} rel="noreferrer" target="_blank">
             {t.footer.instagram}
           </a>

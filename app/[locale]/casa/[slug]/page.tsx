@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
+import { CtaLink } from "@/components/cta-link";
 import { MediaFrame } from "@/components/media-frame";
 import { MdxBody } from "@/components/mdx-body";
 import { PageShell } from "@/components/page-shell";
@@ -42,12 +42,14 @@ export default async function CasaPage({
           <div className="mt-8">
             <MdxBody source={room.body} />
           </div>
-          <Link
+          <CtaLink
+            cta="casa_visita"
+            locale={locale}
             href={publicPath(locale, "/visita")}
             className="mt-10 inline-block bg-[#8c3b2a] px-5 py-3 text-xs tracking-[0.18em] uppercase text-[#e7e3dc]"
           >
             {t.casa.cta}
-          </Link>
+          </CtaLink>
         </div>
       </div>
     </PageShell>

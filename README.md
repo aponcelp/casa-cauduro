@@ -22,7 +22,8 @@ Sentry can wait. No Shopify, Webflow, Sanity, or patron accounts.
 
 ```bash
 cp .env.example .env.local
-# Paste Stripe test keys (sk_test_ / pk_test_) and your Cal.com event URL
+# Paste Stripe test keys (sk_test_ / pk_test_), Cal.com event URL,
+# and PostHog NEXT_PUBLIC_POSTHOG_KEY when the project token is ready
 npm install
 npm run dev
 ```
@@ -69,7 +70,20 @@ Env names are in `.env.example`. Set them in Vercel (Production + Preview):
 | `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` | Stripe publishable (`pk_test_…`) |
 | `STRIPE_WEBHOOK_SECRET` | Stripe webhook signing secret for `/api/webhooks/stripe` |
 | `NEXT_PUBLIC_SUPABASE_URL` / `SUPABASE_SERVICE_ROLE_KEY` | Bookings table we own |
-| `NEXT_PUBLIC_POSTHOG_KEY` | Required on the live site |
+| `NEXT_PUBLIC_POSTHOG_KEY` | PostHog project API key (`phc_…`). Required on Production |
+| `NEXT_PUBLIC_POSTHOG_HOST` | Ingestion host (US default `https://us.i.posthog.com`; EU `https://eu.i.posthog.com`) |
+
+### PostHog (Vercel)
+
+1. Create or pick a PostHog project for Casa Cauduro (org plan may limit you to one project).
+2. Copy **Project API Key** (`phc_…`) and region host from Project settings.
+3. In Vercel → `casa-cauduro` → Settings → Environment Variables, set for **Production** and **Preview**:
+   - `NEXT_PUBLIC_POSTHOG_KEY` = `phc_…`
+   - `NEXT_PUBLIC_POSTHOG_HOST` = `https://us.i.posthog.com` (or EU host)
+4. Redeploy Production after saving env vars.
+5. Verify in PostHog **Activity / Live**: `$pageview` with `locale` `es` or `en`, plus `cta_click` when you tap CTAs (`home_visita`, `tienda_buy`, `contact_submit`, WhatsApp, language switch). Autocapture is on for other clicks.
+
+Until the key is set, the SDK no-ops (no invented tokens in git or Vercel).
 
 Routes:
 
@@ -83,4 +97,4 @@ SQL: `supabase/schema.sql`.
 
 ## Deploy
 
-GitHub `aponcelp/casa-cauduro`. Framework: **Next.js**. Connect the repo to Vercel, set env vars above, point `cauduro.com`, add PostHog on production. Preview deploys per branch. `main` is production.
+GitHub `aponcelp/casa-cauduro`. Framework: **Next.js**. Connect the repo to Vercel, set env vars above, point `cauduro.com`, paste PostHog key on Production when ready. Preview deploys per branch. `main` is production.

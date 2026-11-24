@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Source_Sans_3 } from "next/font/google";
-import { PostHogProvider } from "@/components/posthog-provider";
+import { PostHogPageView } from "@/components/posthog-pageview";
 import "./globals.css";
 
 const sans = Source_Sans_3({
@@ -30,7 +30,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${sans.variable} ${serif.variable} h-full antialiased`}
     >
       <body className="min-h-full font-sans">
-        <PostHogProvider />
+        <PostHogPageView />
         {children}
       </body>
     </html>
