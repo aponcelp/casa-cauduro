@@ -45,7 +45,7 @@ Web-sized JPEG/WebP in `public/media/`. Point `imagen` at `/media/filename.jpg`.
 
 ## Visits
 
-Copy in `content/pages/visita.mdx`. Slots: Cal.com embed via `NEXT_PUBLIC_CALCOM_EMBED_URL`. Each booking must land in Supabase (`supabase/schema.sql`, webhook `app/api/webhooks/calcom`). WhatsApp is support only.
+Copy in `content/pages/visita.mdx`. Price SKU in `content/visita/visita-guiada.mdx` (`precio_mxn`). Flow: Stripe Checkout first (`kind: "visita"`), unlock cookie via `/api/stripe/visit-success`, then Cal.com embed (`NEXT_PUBLIC_CALCOM_EMBED_URL`). Each booking must land in Supabase (`supabase/schema.sql`, webhook `app/api/webhooks/calcom`). WhatsApp is support only.
 
 ## Do not
 

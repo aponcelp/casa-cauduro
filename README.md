@@ -13,7 +13,7 @@ Photography-first recreation of the saved site ([original preview](https://casa-
 | PostHog | Analytics on the live site (pageviews, language, visita, tienda). |
 | Cal.com | Prepaid “Visita guiada Casa Estudio” embed on `/visita`. |
 | Supabase `bookings` | System of record we own. Cal.com webhook copies each booking. |
-| Stripe Checkout | International cards for the shop (`POST /api/stripe/checkout`). Not Mercado Pago. |
+| Stripe Checkout | International cards for the shop and prepaid visits (`POST /api/stripe/checkout`). Not Mercado Pago. |
 | WhatsApp `+52 777 986 6155` | Support and day-of, not checkout. |
 
 Sentry can wait. No Shopify, Webflow, Sanity, or patron accounts.
@@ -36,9 +36,13 @@ Public URLs (proxy rewrites into `app/[locale]/…`):
 
 `npm run build` before a PR.
 
-## Visita (Cal.com)
+## Visita (prepaid Stripe → Cal.com)
 
-`NEXT_PUBLIC_CALCOM_EMBED_URL` is the public booking link (with `?embed=true` preferred). When set, `/visita` embeds that calendar. When missing, the page shows a friendly WhatsApp fallback — no env var names in visitor copy.
+1. Price lives in `content/visita/visita-guiada.mdx` (`precio_mxn`).
+2. **/visita** shows the price and **Pagar y agendar** (Stripe Checkout, `kind: "visita"`).
+3. Success hits `/api/stripe/visit-success`, verifies the paid session, sets an httpOnly unlock cookie, then redirects to `/visita`.
+4. Only then is the Cal.com embed shown. Without payment the calendar stays locked.
+5. `NEXT_PUBLIC_CALCOM_EMBED_URL` is the public booking link (`?embed=true` preferred). When missing, unlocked visitors see a friendly WhatsApp fallback — no env var names in visitor copy. WhatsApp stays support-only.
 
 ## Tienda (Stripe Checkout)
 
@@ -87,10 +91,11 @@ Until the key is set, the SDK no-ops (no invented tokens in git or Vercel).
 
 Routes:
 
-- `/visita` embeds Cal.com when `NEXT_PUBLIC_CALCOM_EMBED_URL` is set
-- `POST /api/stripe/checkout` creates a real Checkout Session (MXN, shipping vs pickup)
+- `/visita` shows price → Stripe pay → unlock cookie → Cal.com embed
+- `POST /api/stripe/checkout` creates Checkout (tienda with shipping, or `kind: "visita"`)
+- `GET /api/stripe/visit-success` verifies payment and sets the unlock cookie
 - `POST /api/webhooks/calcom` → `upsertBooking` → Supabase `bookings`
-- `POST /api/webhooks/stripe` → same table for paid Checkout
+- `POST /api/webhooks/stripe` → same table (`visita_prepaid:…` for visit SKUs)
 - `POST /api/contact` → stub toward `estudio@cauduro.com`
 
 SQL: `supabase/schema.sql`.

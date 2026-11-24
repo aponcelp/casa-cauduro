@@ -5,7 +5,13 @@ import type { Locale } from "@/lib/locale";
 
 const ROOT = path.join(process.cwd(), "content");
 
-export type ContentKind = "obra" | "casa" | "cartelera" | "tienda" | "pages";
+export type ContentKind =
+  | "obra"
+  | "casa"
+  | "cartelera"
+  | "tienda"
+  | "visita"
+  | "pages";
 
 export type ContentFrontmatter = {
   title: string;

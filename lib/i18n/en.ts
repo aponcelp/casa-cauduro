@@ -72,9 +72,19 @@ export const en = {
     intro:
       "Discover the space where Rafael Cauduro lived and painted in Cuernavaca. A guided tour of the studio, gardens and house.",
     embedMissing:
-      "Online booking is temporarily unavailable. Contact us on WhatsApp to reserve your guided visit.",
+      "Online scheduling will be available shortly. Meanwhile, contact us on WhatsApp.",
     whatsapp: "Contact us on WhatsApp",
     book: "Book your guided tour",
+    priceLabel: "Visit price",
+    payCta: "Pay and schedule",
+    payLocked:
+      "Online payment unlocks the calendar. You cannot pick a time slot until you pay.",
+    unlocked: "Payment received. Choose your time below.",
+    cancelled: "Payment cancelled. You can try again whenever you like.",
+    unpaid:
+      "We could not confirm payment. If your card was charged, contact us on WhatsApp.",
+    stripeMissing:
+      "Online payment is unavailable right now. Contact us on WhatsApp to book.",
   },
   cartelera: {
     title: "On view",
@@ -88,7 +98,8 @@ export const en = {
     buy: "Buy",
     unavailable: "Unavailable",
     inquire: "Request price",
-    stripeMissing: "Stripe Checkout is not configured (STRIPE_SECRET_KEY).",
+    stripeMissing:
+      "Online purchase is unavailable right now. Email tienda@cauduro.com.",
   },
   contacto: {
     title: "Contact",

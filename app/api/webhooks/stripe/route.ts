@@ -28,6 +28,9 @@ export async function POST(request: Request) {
     event.type === "checkout.session.async_payment_succeeded"
   ) {
     const session = event.data.object as Stripe.Checkout.Session;
+    const source = session.metadata?.source;
+    const isVisit = source === "visita";
+
     await upsertBooking({
       source: "stripe",
       externalId: session.id,
@@ -36,7 +39,9 @@ export async function POST(request: Request) {
       payerEmail: session.customer_details?.email ?? session.customer_email,
       amount: session.amount_total,
       currency: session.currency,
-      status: event.type,
+      status: isVisit
+        ? `visita_prepaid:${event.type}`
+        : event.type,
       raw: session,
     });
   }
