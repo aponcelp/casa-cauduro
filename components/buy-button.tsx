@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { trackCta } from "@/lib/analytics";
 
 export function BuyButton({
   slug,
@@ -23,6 +24,7 @@ export function BuyButton({
   }
 
   async function checkout() {
+    trackCta("tienda_buy", { locale, slug });
     setPending(true);
     setError(null);
     try {
@@ -50,6 +52,7 @@ export function BuyButton({
         type="button"
         onClick={checkout}
         disabled={pending}
+        data-ph-cta="tienda_buy"
         className="border border-[#8c3b2a] bg-[#8c3b2a] px-5 py-3 text-xs tracking-[0.18em] uppercase text-[#e7e3dc] hover:bg-transparent hover:text-[#8c3b2a] disabled:opacity-50"
       >
         {pending ? "…" : label}

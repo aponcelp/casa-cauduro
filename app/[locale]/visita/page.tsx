@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { CalEmbed } from "@/components/cal-embed";
+import { CtaAnchor } from "@/components/cta-link";
 import { MdxBody } from "@/components/mdx-body";
 import { PageShell } from "@/components/page-shell";
 import { calEmbedIsPlaceholder, calEmbedUrl } from "@/lib/calcom";
@@ -55,12 +56,16 @@ export default async function VisitaPage({
           }
         />
         <p className="mt-8">
-          <a
+          <CtaAnchor
+            cta="visita_whatsapp"
+            locale={locale}
             href="https://wa.me/527779866155?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20las%20visitas%20guiadas%20a%20la%20Casa%20Estudio"
             className="text-sm underline underline-offset-4"
+            rel="noreferrer"
+            target="_blank"
           >
             {t.visita.whatsapp}
-          </a>
+          </CtaAnchor>
         </p>
       </section>
     </PageShell>

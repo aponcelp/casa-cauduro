@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { CtaLink } from "@/components/cta-link";
 import { MediaFrame } from "@/components/media-frame";
 import { PageShell } from "@/components/page-shell";
 import { listDocs } from "@/lib/content";
@@ -47,18 +48,22 @@ export default async function HomePage({
             {t.home.hook}
           </p>
           <div className="anim-fade-up-delay-2 mt-10 flex flex-wrap gap-3">
-            <Link
+            <CtaLink
+              cta="home_visita"
+              locale={locale}
               href={publicPath(locale, "/visita")}
               className="bg-[#8c3b2a] px-5 py-3 text-xs tracking-[0.18em] uppercase text-[#e7e3dc]"
             >
               {t.home.ctaVisita}
-            </Link>
-            <Link
+            </CtaLink>
+            <CtaLink
+              cta="home_obra"
+              locale={locale}
               href={publicPath(locale, "/obra")}
               className="border border-[#e7e3dc]/70 px-5 py-3 text-xs tracking-[0.18em] uppercase"
             >
               {t.home.ctaObra}
-            </Link>
+            </CtaLink>
           </div>
         </div>
       </section>
@@ -126,12 +131,14 @@ export default async function HomePage({
             <p className="mt-5 max-w-xl text-[#3f3b35] leading-7">
               {t.casa.intro}
             </p>
-            <Link
+            <CtaLink
+              cta="casa_visita"
+              locale={locale}
               href={publicPath(locale, "/visita")}
               className="mt-8 inline-block border border-[#8c3b2a] bg-[#8c3b2a] px-5 py-3 text-xs tracking-[0.18em] uppercase text-[#e7e3dc]"
             >
               {t.casa.cta}
-            </Link>
+            </CtaLink>
           </div>
           <div className="grid grid-cols-2 gap-3">
             {rooms.map((room) =>

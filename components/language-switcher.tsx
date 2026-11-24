@@ -1,7 +1,10 @@
+"use client";
+
 import Link from "next/link";
+import { trackCta } from "@/lib/analytics";
+import { getDictionary } from "@/lib/i18n";
 import type { Locale } from "@/lib/locale";
 import { publicPath } from "@/lib/locale";
-import { getDictionary } from "@/lib/i18n";
 
 export function LanguageSwitcher({
   locale,
@@ -22,6 +25,13 @@ export function LanguageSwitcher({
             : "text-[#5c574f] hover:text-[#1a1814]"
         }
         hrefLang="es"
+        onClick={() =>
+          trackCta("language_switch", {
+            locale,
+            target_locale: "es",
+            href: publicPath("es", path),
+          })
+        }
       >
         {t.language.es}
       </Link>
@@ -34,6 +44,13 @@ export function LanguageSwitcher({
             : "text-[#5c574f] hover:text-[#1a1814]"
         }
         hrefLang="en"
+        onClick={() =>
+          trackCta("language_switch", {
+            locale,
+            target_locale: "en",
+            href: publicPath("en", path),
+          })
+        }
       >
         {t.language.en}
       </Link>

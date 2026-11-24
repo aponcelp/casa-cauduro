@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { CtaLink } from "@/components/cta-link";
 import { MediaFrame } from "@/components/media-frame";
 import { PageShell } from "@/components/page-shell";
 import { listDocs } from "@/lib/content";
@@ -32,12 +33,14 @@ export default async function CasaIndexPage({
           <p className="mt-5 max-w-2xl text-lg leading-8 text-[#e7e3dc]/90">
             {t.casa.intro}
           </p>
-          <Link
+          <CtaLink
+            cta="casa_visita"
+            locale={locale}
             href={publicPath(locale, "/visita")}
             className="mt-8 inline-flex w-fit bg-[#8c3b2a] px-5 py-3 text-xs tracking-[0.18em] uppercase"
           >
             {t.casa.cta}
-          </Link>
+          </CtaLink>
         </div>
       </section>
 

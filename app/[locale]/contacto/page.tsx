@@ -15,7 +15,7 @@ export default async function ContactoPage({
     <PageShell locale={locale} path="/contacto">
       <h1 className="font-serif text-4xl">{t.contacto.title}</h1>
       <p className="mt-4 max-w-xl text-[#3f3b35]">{t.contacto.intro}</p>
-      <ContactForm copy={t.contacto} />
+      <ContactForm copy={t.contacto} locale={locale} />
     </PageShell>
   );
 }
