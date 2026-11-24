@@ -41,6 +41,8 @@ export async function POST(request: Request) {
 
   const session = await stripe.checkout.sessions.create({
     mode: "payment",
+    locale: "es",
+    customer_creation: "if_required",
     success_url: `${origin}${localePrefix}/tienda/${slug}?checkout=success`,
     cancel_url: `${origin}${localePrefix}/tienda/${slug}?checkout=cancel`,
     line_items: [
@@ -55,6 +57,33 @@ export async function POST(request: Request) {
             images: product.frontmatter.imagen
               ? [`${origin}${product.frontmatter.imagen}`]
               : undefined,
+          },
+        },
+      },
+    ],
+    shipping_address_collection: {
+      allowed_countries: ["MX", "US", "CA", "ES"],
+    },
+    shipping_options: [
+      {
+        shipping_rate_data: {
+          type: "fixed_amount",
+          fixed_amount: { amount: 0, currency: "mxn" },
+          display_name: "Recoger en la visita / casa",
+          delivery_estimate: {
+            minimum: { unit: "business_day", value: 1 },
+            maximum: { unit: "business_day", value: 14 },
+          },
+        },
+      },
+      {
+        shipping_rate_data: {
+          type: "fixed_amount",
+          fixed_amount: { amount: 25000, currency: "mxn" },
+          display_name: "Envío a domicilio (MXN 250 — estimado)",
+          delivery_estimate: {
+            minimum: { unit: "business_day", value: 5 },
+            maximum: { unit: "business_day", value: 15 },
           },
         },
       },
