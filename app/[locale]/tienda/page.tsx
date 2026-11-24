@@ -20,7 +20,19 @@ export default async function TiendaPage({
       <ul className="mt-12 grid gap-8 sm:grid-cols-2">
         {products.map((product) => (
           <li key={product.slug}>
-            <Link href={publicPath(locale, `/tienda/${product.slug}`)}>
+            <Link
+              href={publicPath(locale, `/tienda/${product.slug}`)}
+              className="block"
+            >
+              {product.frontmatter.imagen ? (
+                <img
+                  src={product.frontmatter.imagen}
+                  alt={product.frontmatter.title}
+                  className="mb-4 aspect-[3/4] w-full object-cover bg-[#ddd7cc]"
+                />
+              ) : (
+                <div className="mb-4 aspect-[3/4] w-full bg-[#ddd7cc]" />
+              )}
               <h2 className="font-serif text-2xl">{product.frontmatter.title}</h2>
               <p className="mt-1 text-sm text-[#5c574f]">
                 {product.frontmatter.precio_mxn

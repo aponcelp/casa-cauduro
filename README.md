@@ -45,17 +45,31 @@ See [AGENTS.md](./AGENTS.md). Short version:
 
 Camera originals stay out of git.
 
-## Integrations (stubs until keys exist)
+## Integrations
 
-Env names are in `.env.example`. Routes:
+Env names are in `.env.example`. Set them in Vercel (Production + Preview):
 
+| Var | Purpose |
+| --- | --- |
+| `NEXT_PUBLIC_SITE_URL` | Canonical site URL (e.g. `https://casa-cauduro.vercel.app`) |
+| `NEXT_PUBLIC_CALCOM_EMBED_URL` | Cal.com event URL, e.g. `https://cal.com/you/visita-guiada` |
+| `CALCOM_WEBHOOK_SECRET` | Optional; verifies `POST /api/webhooks/calcom` |
+| `STRIPE_SECRET_KEY` | Stripe secret (`sk_test_…` first) |
+| `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` | Stripe publishable (`pk_test_…`) |
+| `STRIPE_WEBHOOK_SECRET` | Stripe webhook signing secret for `/api/webhooks/stripe` |
+| `NEXT_PUBLIC_SUPABASE_URL` / `SUPABASE_SERVICE_ROLE_KEY` | Bookings table we own |
+| `NEXT_PUBLIC_POSTHOG_KEY` | Required on the live site |
+
+Routes:
+
+- `/visita` embeds Cal.com when `NEXT_PUBLIC_CALCOM_EMBED_URL` is set
+- `POST /api/stripe/checkout` creates a real Checkout Session (MXN, shipping vs pickup)
 - `POST /api/webhooks/calcom` → `upsertBooking` → Supabase `bookings`
 - `POST /api/webhooks/stripe` → same table for paid Checkout
-- `POST /api/stripe/checkout` → 503/501 until `STRIPE_SECRET_KEY`
 - `POST /api/contact` → stub toward `estudio@cauduro.com`
 
 SQL: `supabase/schema.sql`.
 
 ## Deploy
 
-GitHub `aponcelp/casa-cauduro`. Connect the repo to Vercel, set `cauduro.com`, add PostHog on production. Preview deploys per branch.
+GitHub `aponcelp/casa-cauduro`. Framework: **Next.js**. Connect the repo to Vercel, set env vars above, point `cauduro.com`, add PostHog on production. Preview deploys per branch.
