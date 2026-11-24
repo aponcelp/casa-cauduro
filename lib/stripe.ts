@@ -1,17 +1,20 @@
 import Stripe from "stripe";
 
 export function stripeConfigured(): boolean {
-  return Boolean(process.env.STRIPE_SECRET_KEY);
+  const key = process.env.STRIPE_SECRET_KEY?.trim();
+  return Boolean(
+    key &&
+      (key.startsWith("sk_test_") || key.startsWith("sk_live_")) &&
+      !key.includes("REPLACE"),
+  );
 }
 
 export function getStripe(): Stripe {
-  const key = process.env.STRIPE_SECRET_KEY;
+  const key = process.env.STRIPE_SECRET_KEY?.trim();
   if (!key) {
-    throw new Error("STRIPE_SECRET_KEY is not set");
+    throw new Error("STRIPE_SECRET_KEY is missing");
   }
-  return new Stripe(key, {
-    apiVersion: "2025-02-24.acacia",
-  });
+  return new Stripe(key);
 }
 
 export function siteUrl(): string {
